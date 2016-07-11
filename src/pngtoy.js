@@ -20,6 +20,7 @@ function PngToy(options) {
 
 	this.doCRC = isBool(options.doCRC) ? options.doCRC : true;
 	this.allowInvalid = isBool(options.allowInvalid) ? options.allowInvalid : false;
+	this.beforeSend = options.beforeSend || function(xhr) {};
 
 	/**
 	 * The URL that has been fetched.
@@ -77,6 +78,7 @@ PngToy.prototype = {
 				var xhr = new XMLHttpRequest();
 				xhr.open("GET", url, true);
 				xhr.responseType = "arraybuffer";
+				me.beforeSend(xhr);
 				xhr.onerror = function(e) {reject("Network error. " + e.message)};
 				xhr.onload = function() {
 					if (xhr.status === 200) {
