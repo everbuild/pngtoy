@@ -1,5 +1,5 @@
 /*!
-	pngtoy version 0.4.0 ALPHA
+	pngtoy version 0.4.5 ALPHA
 
 	By Ken Nilsen / Epistemex (c) 2015
 	www.epistemex.com
@@ -12,6 +12,9 @@
  * network as raw file. It provides methods to extract chunks as parsed
  * objects as well as decompressing, decoding and filtering the bitmap.
  * @param {object} options - options
+ * @param {boolean} [options.doCRC=true] - enable/disable CRC-32 check for chunks (useful for repairing PNG files)
+ * @param {boolean} [options.allowInvalid=false] - less strict passing allowing invalid data/chunks (useful for repairing PNG files)
+ * @param {function} [options.beforeSend] - callback allowing setting headers before making xhr request.
  * @constructor
  */
 function PngToy(options) {

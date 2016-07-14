@@ -1,6 +1,9 @@
 Change log for pngtoy
 ---------------------
 
+0.4.5 ALPHA
+ADD: New option beforeSend
+
 0.4.0 ALPHA
 ADD: Extension chunks oFFs, sCAL, pCAL, sTER
 ADD: Text field sanitation
