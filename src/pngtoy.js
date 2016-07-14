@@ -1,9 +1,8 @@
 /*!
-	pngtoy version 0.4.5 ALPHA
+	pngtoy version 0.4.6 ALPHA
 
-	By Ken Nilsen / Epistemex (c) 2015
+	By Epistemex (c) 2015-2016
 	www.epistemex.com
-
 	MIT License (this header required)
 */
 
@@ -108,6 +107,9 @@ PngToy.prototype = {
 			catch(err) {reject(err.message)}
 		})
 	},
+
+	//todo add a text based chunk retriever
+	//getChunk(chunkName)
 
 	/**
 	 * Get a parsed version of the IHDR chunk. An object is returned

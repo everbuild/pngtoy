@@ -1,5 +1,9 @@
 /*
-Parse pHYs
+	Parse pHYs
+
+	pngtoy
+	By Epistemex (c) 2015-2016
+	www.epistemex.com
  */
 PngToy._pHYs = function(host) {
 

@@ -1,5 +1,9 @@
 /*
-Parse IHDR
+	Parse IHDR
+
+	pngtoy
+	By Epistemex (c) 2015-2016
+	www.epistemex.com
  */
 
 PngToy._IHDR = function(host) {

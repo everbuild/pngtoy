@@ -1,5 +1,9 @@
 /*
-Parse PLTE
+	Parse PLTE
+
+	pngtoy
+	By Epistemex (c) 2015-2016
+	www.epistemex.com
  */
 PngToy._PLTE = function(host) {
 

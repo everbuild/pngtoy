@@ -2,7 +2,7 @@
 	Decoder module
 
 	pngtoy
-	By Ken Nilsen / Epistemex (c) 2015
+	By Epistemex (c) 2015-2016
 	www.epistemex.com
  */
 /**

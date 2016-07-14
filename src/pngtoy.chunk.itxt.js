@@ -1,5 +1,9 @@
 /*
-Parse iTXt
+	Parse iTXt
+
+	pngtoy
+	By Epistemex (c) 2015-2016
+	www.epistemex.com
  */
 PngToy._iTXt = function(host) {
 

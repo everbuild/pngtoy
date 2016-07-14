@@ -2,7 +2,7 @@
 	Parse cHRM
 
 	pngtoy
-	By Ken Nilsen / Epistemex (c) 2015
+	By Epistemex (c) 2015-2016
 	www.epistemex.com
  */
 PngToy._cHRM = function(host) {

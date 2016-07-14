@@ -1,5 +1,9 @@
 /*
-Parse sBIT
+	Parse sBIT
+
+	pngtoy
+	By Epistemex (c) 2015-2016
+	www.epistemex.com
  */
 PngToy._sBIT = function(host) {
 

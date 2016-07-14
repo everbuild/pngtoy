@@ -2,7 +2,7 @@
 	Parse IDAT
 
 	pngtoy
-	By Ken Nilsen / Epistemex (c) 2015
+	By Epistemex (c) 2015-2016
 	www.epistemex.com
  */
 PngToy._IDAT = function(host) {
