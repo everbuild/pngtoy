@@ -76,33 +76,19 @@
 
 
     <section class="readme-section">
-        <article><h1>﻿pngtoy</h1><p>Low-level implementation of PNG file parser/reader/decoder using JavaScript
-on client size.</p>
+        <article><h1>﻿pngtoy</h1><p>Low-level implementation of PNG file parser/reader/decoder using JavaScript<br>on client size.</p>
 <p><em>Why this when browsers support PNG already?</em></p>
-<p>The browser will simply load and convert any PNG type into RGBA bitmaps.
-It will also apply ICC and gamma correction to the image resulting in
-different values than in the original bitmap.</p>
-<p><strong>pngtoy</strong> is for special case scenarios where you need to work with the
-original bitmap as-is (ie. no gamma, no ICC, indexed, 16-bit etc.) and
-you need the original pixel values. This will also keep the bitmap values
-consistent across browsers as some browser support ICC, gamma, other don't.</p>
-<p><strong>pngtoy</strong> can also be used to analyse PNG files, extract special information
-such as header, chunks, texts and so forth, or to reduce file container size,
-as a tool to attempt repairs to a file, add or remove chunks, and so forth.</p>
-<p><strong>pngtoy</strong> will allow you to work directly with, for example 16-bit greyscale
-bitmap buffers as well as other formats such as bit-planes (you can still
-convert the bitmap to RGBA bitmap or canvas).</p>
-<p><strong>pngtoy</strong> attempts to read all formats specified by the W3C standard (* not all
-are available in this alpha version).</p>
-<p><strong>pngtoy</strong> can also be used to clean up PNG files by stripping unnecessary
-chunks and rebuild a file you can save as new.</p>
-<p><strong>pngtoy</strong> let you just parse the chunks without decompressing and decoding
-any data.</p>
-<p><strong>pngtoy</strong> do currently not <em>encode</em> PNG files, but works only with existing
-PNG files and content (chunks can be constructed manually and addec - * build
-tools not available in alpha).</p>
+<p>The browser will simply load and convert any PNG type into RGBA bitmaps.<br>It may also apply ICC and gamma correction to the image resulting in<br>different pixel values than in the original bitmap.</p>
+<p><strong>pngtoy</strong> is for special case scenarios where you need to work with the<br>original bitmap as-is (ie. no gamma, no ICC, indexed, 16-bit etc.) and<br>you need the original pixel values and format. This will also keep the bitmap values<br>consistent across browsers as some browser support ICC, gamma, others doesn't.</p>
+<p><strong>pngtoy</strong> can also be used to analyse PNG files, extract special information<br>such as header, chunks, texts and so forth, or to reduce file size,<br>as a tool to attempt repairs to a file, add or remove chunks, and so forth.</p>
+<p><strong>pngtoy</strong> will allow you to work directly with, for example 16-bit greyscale<br>bitmap buffers as well as other formats such as bit-planes (you can still<br>convert the bitmap to RGBA bitmap or canvas).</p>
+<p><strong>pngtoy</strong> attempts to read all formats specified by the W3C standard (* not all<br>are available in this alpha version).</p>
+<p><strong>pngtoy</strong> can also be used to clean up PNG files by stripping unnecessary<br>chunks and rebuild a file you can save as new.</p>
+<p><strong>pngtoy</strong> let you just parse the chunks without decompressing and decoding<br>any data.</p>
+<p>(<strong>pngtoy</strong> can be used to repair and optimize PNG files.)</p>
+<p><strong>pngtoy</strong> do currently not <em>encode</em> PNG files, but works only with existing<br>PNG files and content (chunks can be constructed manually and added - * build<br>tools not available in alpha).</p>
 <h2>Features</h2><ul>
-<li>Supports 8-bit, 16-bit, indexed, bitplanes, greyscale, rgb, rgba, transparency and interlaced.</li>
+<li>Supports 8-bit, 16-bit, indexed, bit-planes, greyscale, rgb, rgba, transparency (and interlaced*).</li>
 <li>Strict parsing conforming to the standard (can be turned off for error correction purposes)</li>
 <li>CRC-checking for each chunk (can be turned off for error correction purposes)</li>
 <li>Using typed arrays for best performance</li>
@@ -121,8 +107,7 @@ tools not available in alpha).</p>
 <li>Support for Canvas64 (TBA) NOT IMPL.</li>
 <li>Can be used in attempt to rescue corrupted PNG files</li>
 </ul>
-<p>Run the PNG test suit from the tests directory to see current status/rendering (must run
-from localhost in some browsers due to CORS restrictions).</p>
+<p>Run the PNG test suit from the tests directory to see current status/rendering (must run<br>from localhost in some browsers due to CORS restrictions).</p>
 <h2>Install</h2><p><strong>pngtoy</strong> can be installed in various ways:</p>
 <ul>
 <li>Bower <code>bower install pngtoy</code></li>
@@ -150,15 +135,15 @@ pngtoy.decode(options).then( ...) ;            // get decoded bitmap in original
 pngtoy.bitmapToCanvas(bmp, options).then(...)  // convert to canvas and apply optional gamma</code></pre><p>See also the <code>PngImage</code> object.</p>
 <p>NOTE: ALPHA version - API may change, see tests for current examples.</p>
 <h2>Known issues (alpha)</h2><ul>
-<li>Interlace (Adam7) mode does not work properly at the moment (do not use)</li>
+<li>Interlace (Adam7) mode does not currently work (do not use interlaced images)</li>
 </ul>
 <h2>Credits</h2><ul>
 <li>The <a href="https://github.com/nodeca/pako">pako inflate decompression code</a> was written by Andrey Tupitsin (@anrd83) and Vitaly Puzrin (@puzrin)</li>
 <li>The <a href="https://github.com/taylorhakes/promise-polyfill">Promise polyfill</a> (optional) by @taylorhakes</li>
 </ul>
 <h2>License</h2><p>Released under <a href="http://choosealicense.com/licenses/mit/">MIT license</a>. You may use this class in both commercial and non-commercial projects provided that full header (minified and developer versions) is included.</p>
-<p><em>&copy; 2015 Epistmex</em></p>
-<p><img src="http://i.imgur.com/YxO8CtB.png" alt="Epistemex"></p></article>
+<p><em>&copy; 2015-2016 Epistemex</em></p>
+<p><img src="http://i.imgur.com/wZSsyt8.png" alt="Epistemex"></p></article>
     </section>
 
 
@@ -172,7 +157,7 @@ pngtoy.bitmapToCanvas(bmp, options).then(...)  // convert to canvas and apply op
 				<div class="clearfix"></div>
 				<footer>
 					
-					<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHib</a></b></p>
+					<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHub</a></b></p>
 					<br />
 					
 					
@@ -182,8 +167,8 @@ pngtoy.bitmapToCanvas(bmp, options).then(...)  // convert to canvas and apply op
 					<br />
 					
 		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.1</a>
-		on Fri Nov 6th 2015 using the <a
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+		on Thu Jul 14th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

@@ -77,9 +77,7 @@
     
     
     <div class="description">
-        <p>Creates a new PngToy object which is used to load a PNG image off the
-network as raw file. It provides methods to extract chunks as parsed
-objects as well as decompressing, decoding and filtering the bitmap.</p>
+        <p>Creates a new PngToy object which is used to load a PNG image off the<br>network as raw file. It provides methods to extract chunks as parsed<br>objects as well as decompressing, decoding and filtering the bitmap.</p>
     </div>
     
 
@@ -129,7 +127,152 @@ objects as well as decompressing, decoding and filtering the bitmap.</p>
 
             
 
-            <td class="description last"><p>options</p></td>
+            <td class="description last"><p>options</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>doCRC</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>enable/disable CRC-32 check for chunks (useful for repairing PNG files)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>allowInvalid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>less strict passing allowing invalid data/chunks (useful for repairing PNG files)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>beforeSend</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>callback allowing setting headers before making xhr request.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
         </tr>
 
 	
@@ -273,8 +416,7 @@ objects as well as decompressing, decoding and filtering the bitmap.</p>
 <dd>
     
     <div class="description">
-        <p>Array holding all the chunks objects. These can be used to manually
-parse the file.</p>
+        <p>Array holding all the chunks objects. These can be used to manually<br>parse the file.</p>
     </div>
     
 
@@ -637,13 +779,8 @@ parse the file.</p>
     
     
     <div class="description">
-        <p>Decodes the filtered bitmap from the PNG to a raw bitmap of same
-byte width and depth. Passes a bitmap object as argument to the promise
-when done. The decoding is asynchronous and does not block the UI.</p>
-<p>Call this method after fetch() has been used. The resolve function will
-receive a bitmap as argument, if rejected a string containing the error
-will be passed. The bitmap contains the filtered bitmap as well as some
-key information (additional information is extracted from the chunks).</p>
+        <p>Decodes the filtered bitmap from the PNG to a raw bitmap of same<br>byte width and depth. Passes a bitmap object as argument to the promise<br>when done. The decoding is asynchronous and does not block the UI.</p>
+<p>Call this method after fetch() has been used. The resolve function will<br>receive a bitmap as argument, if rejected a string containing the error<br>will be passed. The bitmap contains the filtered bitmap as well as some<br>key information (additional information is extracted from the chunks).</p>
     </div>
     
 
@@ -728,11 +865,7 @@ key information (additional information is extracted from the chunks).</p>
     
     
     <div class="description">
-        <p>Start loading a PNG image from an URL. CORS restrictions apply.
-It will call the resolve function with a bitmap representing the
-raw unfiltered bitmap. Pass this bitmap object to decode() to get
-a raw filtered bitmap, and further to convert() to get a RGBA
-bitmap.</p>
+        <p>Start loading a PNG image from an URL. CORS restrictions apply.<br>It will call the resolve function with a bitmap representing the<br>raw unfiltered bitmap. Pass this bitmap object to decode() to get<br>a raw filtered bitmap, and further to convert() to get a RGBA<br>bitmap.</p>
     </div>
     
 
@@ -866,9 +999,7 @@ bitmap.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the bKGD chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunk is present null will be returned.</p>
+        <p>Get a parsed version of the bKGD chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunk is present null will be returned.</p>
     </div>
     
 
@@ -956,9 +1087,7 @@ chunk is present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the cHRM chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunk is present null will be returned.</p>
+        <p>Get a parsed version of the cHRM chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunk is present null will be returned.</p>
     </div>
     
 
@@ -1046,9 +1175,7 @@ chunk is present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the gAMA chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunk is present null will be returned.</p>
+        <p>Get a parsed version of the gAMA chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunk is present null will be returned.</p>
     </div>
     
 
@@ -1136,9 +1263,7 @@ chunk is present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the hIST chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunks are present null will be returned.</p>
+        <p>Get a parsed version of the hIST chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunks are present null will be returned.</p>
     </div>
     
 
@@ -1226,9 +1351,7 @@ chunks are present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the iCCP chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunk is present null will be returned.</p>
+        <p>Get a parsed version of the iCCP chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunk is present null will be returned.</p>
     </div>
     
 
@@ -1316,10 +1439,7 @@ chunk is present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the IDAT chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunks are present null will be returned. This is a critical
-chunk and if missing the PNG is to be considered invalid.</p>
+        <p>Get a parsed version of the IDAT chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunks are present null will be returned. This is a critical<br>chunk and if missing the PNG is to be considered invalid.</p>
     </div>
     
 
@@ -1407,9 +1527,7 @@ chunk and if missing the PNG is to be considered invalid.</p>
     
     
     <div class="description">
-        <p>Get status of the IEND chunk (a 0-length chunk). A boolean is
-returned which should always be true. This is a critical chunk,
-and if false is returned the PNG is to be considered invalid.</p>
+        <p>Get status of the IEND chunk (a 0-length chunk). A boolean is<br>returned which should always be true. This is a critical chunk,<br>and if false is returned the PNG is to be considered invalid.</p>
     </div>
     
 
@@ -1494,10 +1612,7 @@ and if false is returned the PNG is to be considered invalid.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the IHDR chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunks are present null will be returned. This is a critical
-chunk and if missing the PNG is to be considered invalid.</p>
+        <p>Get a parsed version of the IHDR chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunks are present null will be returned. This is a critical<br>chunk and if missing the PNG is to be considered invalid.</p>
     </div>
     
 
@@ -1585,9 +1700,7 @@ chunk and if missing the PNG is to be considered invalid.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the iTXi chunks. An array is returned containing
-objects with properties representing the specifics of these chunks. If no
-chunks are present null will be returned.</p>
+        <p>Get a parsed version of the iTXi chunks. An array is returned containing<br>objects with properties representing the specifics of these chunks. If no<br>chunks are present null will be returned.</p>
     </div>
     
 
@@ -1851,9 +1964,7 @@ chunks are present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the pHYs chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunk is present null will be returned.</p>
+        <p>Get a parsed version of the pHYs chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunk is present null will be returned.</p>
     </div>
     
 
@@ -1941,11 +2052,7 @@ chunk is present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the PLTE chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunks are present null will be returned. This is a critical
-chunk if color mode is 3, and if missing the PNG is to be
-considered invalid.</p>
+        <p>Get a parsed version of the PLTE chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunks are present null will be returned. This is a critical<br>chunk if color mode is 3, and if missing the PNG is to be<br>considered invalid.</p>
     </div>
     
 
@@ -2033,9 +2140,7 @@ considered invalid.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the sBIT chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunk is present null will be returned.</p>
+        <p>Get a parsed version of the sBIT chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunk is present null will be returned.</p>
     </div>
     
 
@@ -2211,9 +2316,7 @@ chunk is present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the sPLT chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunks are present null will be returned.</p>
+        <p>Get a parsed version of the sPLT chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunks are present null will be returned.</p>
     </div>
     
 
@@ -2301,9 +2404,7 @@ chunks are present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the sRGB chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunk is present null will be returned.</p>
+        <p>Get a parsed version of the sRGB chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunk is present null will be returned.</p>
     </div>
     
 
@@ -2479,9 +2580,7 @@ chunk is present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the tEXt chunks. An array is returned containing
-objects with properties representing the specifics of these chunks. If no
-chunks are present null will be returned.</p>
+        <p>Get a parsed version of the tEXt chunks. An array is returned containing<br>objects with properties representing the specifics of these chunks. If no<br>chunks are present null will be returned.</p>
     </div>
     
 
@@ -2569,9 +2668,7 @@ chunks are present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the tIME chunk. An array is returned
-containing objects with properties representing the specifics of this chunk. If no
-chunk is present null will be returned.</p>
+        <p>Get a parsed version of the tIME chunk. An array is returned<br>containing objects with properties representing the specifics of this chunk. If no<br>chunk is present null will be returned.</p>
     </div>
     
 
@@ -2656,9 +2753,7 @@ chunk is present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed version of the tRNs chunk. An object is returned
-with properties representing the specifics of this chunk. If no
-chunks are present null will be returned.</p>
+        <p>Get a parsed version of the tRNs chunk. An object is returned<br>with properties representing the specifics of this chunk. If no<br>chunks are present null will be returned.</p>
     </div>
     
 
@@ -2746,10 +2841,7 @@ chunks are present null will be returned.</p>
     
     
     <div class="description">
-        <p>Get a parsed and decompressed version of the zTXt chunks. An array
-is returned containing objects with properties representing the
-specifics of these chunks. If no chunks are present null will be
-returned.</p>
+        <p>Get a parsed and decompressed version of the zTXt chunks. An array<br>is returned containing objects with properties representing the<br>specifics of these chunks. If no chunks are present null will be<br>returned.</p>
     </div>
     
 
@@ -2837,10 +2929,7 @@ returned.</p>
     
     
     <div class="description">
-        <p>Creates a look-up table (LUT) for the provided file gamma, and
-optionally display and user gamma. Display gamma is usually either
-2.2 (Windows, Linux) or 1.8 (Mac). It is used internally but is
-provided if you want to apply gamma to the bitmap manually.</p>
+        <p>Creates a look-up table (LUT) for the provided file gamma, and<br>optionally display and user gamma. Display gamma is usually either<br>2.2 (Windows, Linux) or 1.8 (Mac). It is used internally but is<br>provided if you want to apply gamma to the bitmap manually.</p>
 <p>NOTE that this LUT table is limited to 8-bit values.</p>
     </div>
     
@@ -3073,10 +3162,7 @@ provided if you want to apply gamma to the bitmap manually.</p>
     
     
     <div class="description">
-        <p>Guess the display gamma on this system, usually 2.2 (Windows, Linux)
-or 1.8 (Mac). If unable to detect system a default of 2.2 will be used.
-This is used when a raw bitmap is converted to a RGBA bitmap and
-gamma is enabled.</p>
+        <p>Guess the display gamma on this system, usually 2.2 (Windows, Linux)<br>or 1.8 (Mac). If unable to detect system a default of 2.2 will be used.<br>This is used when a raw bitmap is converted to a RGBA bitmap and<br>gamma is enabled.</p>
     </div>
     
 
@@ -3168,7 +3254,7 @@ gamma is enabled.</p>
 				<div class="clearfix"></div>
 				<footer>
 					
-					<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHib</a></b></p>
+					<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHub</a></b></p>
 					<br />
 					
 					
@@ -3178,8 +3264,8 @@ gamma is enabled.</p>
 					<br />
 					
 		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.1</a>
-		on Fri Nov 6th 2015 using the <a
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+		on Thu Jul 14th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
