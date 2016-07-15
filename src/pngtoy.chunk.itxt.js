@@ -7,23 +7,19 @@
  */
 PngToy._iTXt = function(host) {
 
-	/*
-	FIXME We do not comform entirely here.. if we do error check then
-	we should abort on an error, however, forEach cannot be aborted,
-	and also, it isn't fully supported so fix this to something else
-	in future. Leave for alpha (also applies to tEXt, zTXt)
-	 */
-
 	var view = host.view,
 		chunks = host.chunks,
 		allowInvalid = host.allowInvalid,
 		chunkLst = PngToy._findChunks(chunks, "iTXt"),
 		pos, txtBuff, o, i, warn = false,
+		abort = false,
 		lst = [];
 
 	if (!chunkLst.length) return null;
 
 	chunkLst.forEach(function(chunk) {
+
+		if (abort) return;
 
 		var result = {};
 
@@ -91,6 +87,7 @@ PngToy._iTXt = function(host) {
 		}
 
 		if (!allowInvalid && warn) {
+			abort = true;
 			return {error: "One or more field contains illegal chars."}
 		}
 

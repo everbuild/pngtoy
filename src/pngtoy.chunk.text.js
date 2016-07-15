@@ -12,12 +12,15 @@ PngToy._tEXt = function(host) {
 		allowInvalid = host.allowInvalid,
 		chunkLst = PngToy._findChunks(chunks, "tEXt"),
 		warn = false,
+		abort = false,
 		pos, txtBuff, o, i,
 		lst = [];
 
 	if (!chunkLst.length) return null;
 
 	chunkLst.forEach(function(chunk) {
+
+		if (abort) return;
 
 		var result = {};
 		pos = chunk.offset;
@@ -39,6 +42,7 @@ PngToy._tEXt = function(host) {
 		lst.push(result);
 
 		if (!allowInvalid && warn) {
+			abort = true;
 			return {error: "One or more field contains illegal chars."}
 		}
 	});

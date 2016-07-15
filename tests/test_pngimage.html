@@ -31,8 +31,8 @@
 
 		// if we want to examine details, we can obtain the pngtoy object:
 
-		var pngtoy = this.pngtoy,       // internal pngtoy object
-			hdr = pngtoy.get_IHDR();    // get a parsed header object
+		var pngtoy = this.pngtoy,          // internal pngtoy object
+			hdr = pngtoy.getChunk("IHDR"); // get a parsed header object
 
 		out.innerHTML = "Color type: " + ["Grey","", "RGB","Indexed","Grey alpha","","RGBA"][hdr.type] +
 						" Depth: " + hdr.depth;

@@ -29,8 +29,10 @@ PngToy.prototype.convertToCanvas = function(bmp, options) {
 
 					// ratio support
 					if ((bmp.ratioY !== 1 || bmp.ratioX !== 1) && !options.ignoreAspectRatio) {
+
 						var tcanvas = document.createElement("canvas"),
 							tctx = tcanvas.getContext("2d"), w, h;
+
 						if (bmp.ratioY >= 1) {
 							w = canvas.width;
 							h = (canvas.height * bmp.ratioY)|0;
@@ -39,6 +41,7 @@ PngToy.prototype.convertToCanvas = function(bmp, options) {
 							w  = (canvas.width * bmp.ratioX)|0;
 							h = canvas.height;
 						}
+
 						tcanvas.width = w;
 						tcanvas.height = h;
 						tctx.drawImage(canvas, 0, 0, w, h);

@@ -1,5 +1,5 @@
 /*!
-	pngtoy version 0.4.6 ALPHA
+	pngtoy version 0.5.0 ALPHA
 
 	By Epistemex (c) 2015-2016
 	www.epistemex.com
@@ -108,185 +108,26 @@ PngToy.prototype = {
 		})
 	},
 
-	//todo add a text based chunk retriever
-	//getChunk(chunkName)
-
 	/**
-	 * Get a parsed version of the IHDR chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunks are present null will be returned. This is a critical
-	 * chunk and if missing the PNG is to be considered invalid.
-	 * @returns {*|null}
-	 */
-	get_IHDR: function() {return PngToy._IHDR(this)},
-
-	/**
-	 * Get a parsed version of the IDAT chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunks are present null will be returned. This is a critical
-	 * chunk and if missing the PNG is to be considered invalid.
-	 * @returns {*|null}
-	 */
-	get_IDAT: function() {return PngToy._IDAT(this)},
-
-	/**
-	 * Get a parsed version of the PLTE chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunks are present null will be returned. This is a critical
-	 * chunk if color mode is 3, and if missing the PNG is to be
-	 * considered invalid.
-	 * @returns {*|null}
-	 */
-	get_PLTE: function() {return PngToy._PLTE(this)},
-
-	/**
-	 * Get a parsed version of the sPLT chunk. An object is returned
+	 * Get a parsed version of the named chunk. An object is returned
 	 * with properties representing the specifics of this chunk. If no
 	 * chunks are present null will be returned.
 	 * @returns {*|null}
 	 */
-	get_sPLT: function() {return PngToy._sPLT(this)},
+	getChunk: function(chunkName) {
+		var chunks = [
+			"IHDR", "IDAT", "PLTE", "sPLT", "tRNS", "iTXt", "tEXt", "zTXt",
+			"iCCP", "gAMA", "cHRM", "sRGB", "hIST", "sBIT", "pHYs", "bKGD",
+			"tIME", "oFFs", "sTER", "sCAL", "pCAL", "IEND"];
 
-	/**
-	 * Get a parsed version of the tRNs chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunks are present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_tRNS: function() {return PngToy._tRNS(this)},
-
-	/**
-	 * Get a parsed version of the iTXi chunks. An array is returned containing
-	 * objects with properties representing the specifics of these chunks. If no
-	 * chunks are present null will be returned.
-	 * @returns {Array|null}
-	 */
-	get_iTXt: function() {return PngToy._iTXt(this)},
-
-	/**
-	 * Get a parsed version of the tEXt chunks. An array is returned containing
-	 * objects with properties representing the specifics of these chunks. If no
-	 * chunks are present null will be returned.
-	 * @returns {Array|null}
-	 */
-	get_tEXt: function() {return PngToy._tEXt(this)},
-
-	/**
-	 * Get a parsed and decompressed version of the zTXt chunks. An array
-	 * is returned containing objects with properties representing the
-	 * specifics of these chunks. If no chunks are present null will be
-	 * returned.
-	 * @returns {Array|null}
-	 */
-	get_zTXt: function() {return PngToy._zTXt(this)},
-
-	/**
-	 * Get a parsed version of the iCCP chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunk is present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_iCCP: function() {return PngToy._iCCP(this)},
-
-	/**
-	 * Get a parsed version of the gAMA chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunk is present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_gAMA: function() {return PngToy._gAMA(this)},
-
-	/**
-	 * Get a parsed version of the cHRM chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunk is present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_cHRM: function() {return PngToy._cHRM(this)},
-
-	/**
-	 * Get a parsed version of the sRGB chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunk is present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_sRGB: function() {return PngToy._sRGB(this)},
-
-	/**
-	 * Get a parsed version of the hIST chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunks are present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_hIST: function() {return PngToy._hIST(this)},
-
-	/**
-	 * Get a parsed version of the sBIT chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunk is present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_sBIT: function() {return PngToy._sBIT(this)},
-
-	/**
-	 * Get a parsed version of the pHYs chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunk is present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_pHYs: function() {return PngToy._pHYs(this)},
-
-	/**
-	 * Get a parsed version of the bKGD chunk. An object is returned
-	 * with properties representing the specifics of this chunk. If no
-	 * chunk is present null will be returned.
-	 * @returns {*|null}
-	 */
-	get_bKGD: function() {return PngToy._bKGD(this)},
-
-	/**
-	 * Get a parsed version of the tIME chunk. An array is returned
-	 * containing objects with properties representing the specifics of this chunk. If no
-	 * chunk is present null will be returned.
-	 * @returns {*}
-	 */
-	get_tIME: function() {return PngToy._tIME(this)},
-
-	/**
-	 * Get status of the IEND chunk (a 0-length chunk). A boolean is
-	 * returned which should always be true. This is a critical chunk,
-	 * and if false is returned the PNG is to be considered invalid.
-	 * @returns {boolean}
-	 */
-	get_IEND: function() {return !!PngToy._findChunk(this.chunks, "IEND")},
-
-	/*
-	Extension chunks
-	 */
-
-	/**
-	 * Get extension chunk oFFs.
-	 * @returns {*|null}
-	 */
-	get_oFFs: function() {return PngToy._oFFs(this)},
-
-	/**
-	 * Get extension chunk sTER.
-	 * @returns {*|null}
-	 */
-	get_sTER: function() {return PngToy._sTER(this)},
-
-	/**
-	 * Get extension chunk sCAL.
-	 * @returns {*|null}
-	 */
-	get_sCAL: function() {return PngToy._sCAL(this)},
-
-	/**
-	 * Get extension chunk pCAL.
-	 * @returns {*|null}
-	 */
-	get_pCAL: function() {return PngToy._pCAL(this)},
+		if (chunks.indexOf(chunkName) > -1) {
+			return chunkName === "IEND" ?
+				   !!PngToy._findChunk(this.chunks, "IEND") : PngToy["_" + chunkName](this);
+		}
+		else {
+			return PngToy._findChunk(this.chunks, chunkName)
+		}
+	},
 
 	/*
 	Conversion and misc
@@ -297,13 +138,13 @@ PngToy.prototype = {
 	 * @returns {Promise}
 	 * @private
 	 */
-	toImage: function() {
+	/*toImage: function() {
 		return new Promise(function(resolve, reject) {
 
 			// todo create data-uri of array, image, onload/error/abort
 
 		})
-	},
+	},*/
 
 	/**
 	 * Creates a look-up table (LUT) for the provided file gamma, and

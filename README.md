@@ -11,9 +11,10 @@ It may also apply ICC and gamma correction to the image resulting in
 different pixel values than in the original bitmap.
 
 **pngtoy** is for special case scenarios where you need to work with the
-original bitmap as-is (ie. no gamma, no ICC, indexed, 16-bit etc.) and
-you need the original pixel values and format. This will also keep the bitmap values
-consistent across browsers as some browser support ICC, gamma, others don't.
+original bitmap as-is and you need the original pixel values and format
+(i.e. no gamma, no ICC, indexed, 16-bit, grayscale etc.). This will also 
+keep the bitmap values consistent across browsers as some browser support 
+ICC, gamma, others don't.
 
 **pngtoy** can also be used to analyse PNG files, extract special information
 such as header, chunks, texts, or to reduce file size, or as a tool to in
@@ -23,20 +24,13 @@ an attempt to repair a PNG file, add or remove chunks, and so forth.
 bitmap buffers as well as other formats such as bit-planes (you can still
 convert the bitmap to RGBA bitmap or canvas).
 
-**pngtoy** attempts to read all formats specified by the W3C standard (* interlaced
-not currently supported).
+**pngtoy** attempts to read all formats specified by the W3C standard.
 
 **pngtoy** can also be used to clean up PNG files by stripping unnecessary
 chunks and rebuild a file you can save as new.
 
 **pngtoy** let you just parse the chunks without decompressing and decoding
 any data.
-
-**pngtoy** do currently not *encode* PNG files, but works only with existing
-PNG files and content (chunks can be constructed manually and added - * build
-tools not available in alpha).
-
-**Coming: pngexp - save optimized PNG files.**
 
 
 Features
@@ -90,18 +84,20 @@ Now you can extract the information you like from the current PNG file:
     var chunks = pngtoy.getChunks();        	   // chunk list - does not decode any data
 
     // parse individual chunks to object (all official chunks are supported)
-    var ihdr = pngtoy.get_IHDR();            	   // return object for parsed IHDR chunk
-    var raw = pngtoy.get_IDAT();             	   // get unfiltered but uncompressed bitmap data
-    var palette = pngtoy.get_PLTE();               // get parsed palette if exists, or null
-    var texts = pngtoy.get_zTXt();                 // get array with parsed and uncompressed zTXt objects
-    var stereo = pngtoy.get_sTER();                // get stereo mode if stereo image
+    var ihdr = pngtoy.getChunk("IHDR");        	   // return object for parsed IHDR chunk
+    var raw = pngtoy.getChunk("IDAT");         	   // get unfiltered but uncompressed bitmap data
+    var palette = pngtoy.getChunk("PLTE");         // get parsed palette if exists, or null
+    var texts = pngtoy.getChunk("zTXt");           // get array with parsed and uncompressed zTXt objects
+    var stereo = pngtoy.getChunk("sTER");          // get stereo mode if stereo image
     ...
+
+    // you can also obtain private chunks but will have to parse them manually
 
     // decode
     pngtoy.decode(options).then( ...) ;            // get decoded bitmap in original depth and type
     pngtoy.bitmapToCanvas(bmp, options).then(...)  // convert to canvas and apply optional gamma
 
-See also the `PngImage` object.
+See also the `PngImage` object which wraps the basic steps up for convenience (see docs for usage).
 
 NOTE: ALPHA version - API may change, see tests for current examples.
 
@@ -115,8 +111,8 @@ Known issues (alpha)
 Credits
 -------
 
-- The [pako inflate decompression code](https://github.com/nodeca/pako) was written by Andrey Tupitsin (@anrd83) and Vitaly Puzrin (@puzrin)
-- The [Promise polyfill](https://github.com/taylorhakes/promise-polyfill) (optional) by @taylorhakes
+- [pako inflate decompression code](https://github.com/nodeca/pako) by Andrey Tupitsin (@anrd83) and Vitaly Puzrin (@puzrin)
+- [Promise polyfill](https://github.com/taylorhakes/promise-polyfill) (optional) by @taylorhakes
 
 
 Contributors

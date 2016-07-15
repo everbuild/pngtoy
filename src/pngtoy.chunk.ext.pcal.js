@@ -43,7 +43,7 @@ PngToy._pCAL = function(host) {
 
 	if (o.warn) warn = true;
 
-	//parameters
+	// parameters
 	len = result.paramCount - 1;
 	for(; i < len; i++) {
 		o = PngToy._getStr(view, pos, 10000);

@@ -1,11 +1,15 @@
 Change log for pngtoy
 ---------------------
 
+0.5.0 ALPHA
+ADD: `getChunk(str)` method replacing individual methods (e.g. `get_IDAT()` -> `getChunk("IDAT")` etc.).
+REM: All `get_*()` methods.
+
 0.4.6 ALPHA
-CHG: Updated pako.inflate to recent version
+CHG: Updated pako.inflate to more recent version
 
 0.4.5 ALPHA
-ADD: New option beforeSend
+ADD: New option `beforeSend` taking a function to execute before sending via XHR.
 
 0.4.0 ALPHA
 ADD: Extension chunks oFFs, sCAL, pCAL, sTER
@@ -14,10 +18,10 @@ FIX: sBIT wasn't wired up to API
 FIX: Internal offset to unit field in pHYs chunk
 
 0.3.0 ALPHA
-ADD: Big image test (4k x 4k)
+ADD: Big image test (4k x 4k) [removed again due to using old logo, will regenerate later]
 ADD: Boolean status for IEND chunk (get_IEND()).
 ADD: Preliminary documentation (doesn't go too much into details yet)
-CHG: guessGamma() -> guessDisplayGamma() to better distinguish what gamma is being guessed
+CHG: guessGamma() -> guessDisplayGamma() to better distinguish what gamma type is being guessed
 CHG: Adjusting block-size to a more optimal value for large async loaded images
 
 0.2.0 ALPHA
@@ -44,4 +48,4 @@ FIX: Fixed rounding error in delta offset for filter (fixes tm3n3p02.png, f99n0g
 NEW: Initial release
 
 
-(c) Epistemex 2015
+(c) Epistemex 2015-2016

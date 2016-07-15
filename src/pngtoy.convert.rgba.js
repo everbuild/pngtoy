@@ -15,7 +15,7 @@ PngToy.prototype.convertToRGBA = function(bmp, options) {
 
 		// if no conversion is needed, return right away:
 		if (bmp.type === 6 && bmp.depth === 8 && !options.useGamma) {
-			var tmp = options.ignoreAspectRatio ? null : me.get_pHYs(),
+			var tmp = options.ignoreAspectRatio ? null : me.getChunk("pHYs"),
 				ratioX = tmp ? tmp.ppuY / (tmp.ppuX || 1) : 1,
 				ratioY = tmp ? tmp.ppuX / (tmp.ppuY || 1) : 1;
 
@@ -48,17 +48,17 @@ PngToy.prototype.convertToRGBA = function(bmp, options) {
 
 		// if indexed, initialize palette and transparency
 		if (bmp.type === 3) {
-			plte = me.get_PLTE();
+			plte = me.getChunk("PLTE");
 			palette = plte ? plte.palette : [];
 		}
 
-		trns = me.get_tRNS();
+		trns = me.getChunk("tRNS");
 		alphas = trns && trns.alphas ? trns.alphas : [];
 
-		phys = me.get_pHYs();
-		gamma = me.get_gAMA();
+		phys = me.getChunk("pHYs");
+		gamma = me.getChunk("gAMA");
 
-		gamma = gamma ? gamma.gamma : 1;	// ♪ gamma, chaaaameleoooon ♬ ♪
+		gamma = gamma ? gamma.gamma : 1;	// ♪ gamma, ghaaaameleoooon ♬ ♪  todo .gamma -> value?
 
 		(function convert() {
 

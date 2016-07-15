@@ -23,7 +23,7 @@ PngToy.prototype.decode = function() {
 
 	return new Promise(function(resolve, reject) {
 
-		var ihdr = me.get_IHDR(),
+		var ihdr = me.getChunk("IHDR"),
 			w = ihdr.width,
 			h = ihdr.height,
 			type = ihdr.type,
@@ -37,7 +37,7 @@ PngToy.prototype.decode = function() {
 			lineLen = w * delta,
 			lineDlt = lineLen + Math.ceil(delta),
 
-			src = me.get_IDAT().buffer,
+			src = me.getChunk("IDAT").buffer,
 			dst = new Uint8Array(Math.max(1, Math.ceil(w * delta) * h)),
 			filters = [filt0, filt1, filt2, filt3, filt4],
 

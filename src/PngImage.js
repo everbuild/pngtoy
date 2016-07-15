@@ -7,18 +7,21 @@
  */
 /**
  * Emulates the Image object but will load a PNG image without applying
- * gamma, ICC etc.
+ * gamma, ICC etc. The main purpose is to function as a wrapper for the
+ * various steps needed to load a PNG via low-level pngtoy.
  *
  * NOTE: An important distinction is that you need to pass in
  * `img.bitmap` to canvas instead of just `img`.
+ *
  * @constructor
  */
 function PngImage() {
 
 	var url = "",
 		me = this,
-		crossOrigin = null,
-		png = new PngToy(), bmp, canvas,
+		//crossOrigin = null,
+		png = new PngToy(),
+		bmp, canvas,
 		w = 0, h = 0, complete = false;
 
 	this.onload = null;
@@ -48,7 +51,7 @@ function PngImage() {
 	Object.defineProperty(this, "pngtoy", {get: function() {return png}});
 	Object.defineProperty(this, "complete", {get: function() {return complete}});
 
-	function start() {png.fetch(url).then(decode, error)}		// todo need to support CORS (options)
+	function start() {png.fetch(url).then(decode, error)}
 	function decode(bmpO) {png.decode(bmpO).then(convert, error)}
 
 	function convert(bmpO) {

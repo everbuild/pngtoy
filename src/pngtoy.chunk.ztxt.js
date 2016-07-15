@@ -12,11 +12,14 @@ PngToy._zTXt = function(host) {
 		allowInvalid = host.allowInvalid,
 		chunkLst = PngToy._findChunks(chunks, "zTXt"),
 		warn = false,
+		abort = false,
 		lst = [], pos, o;
 
 	if (!chunkLst.length) return null;
 
 	chunkLst.forEach(function(chunk) {
+
+		if (abort) return;
 
 		var result = {};
 		pos = chunk.offset;
@@ -49,6 +52,7 @@ PngToy._zTXt = function(host) {
 		}
 
 		if (!allowInvalid && warn) {
+			abort = true;
 			return {error: "One or more field contains illegal chars."}
 		}
 

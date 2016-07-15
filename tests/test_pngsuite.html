@@ -180,22 +180,21 @@
 
 		function decode(bmp) {
 
-			// lazy ways... (refactor later):
-			var hdr = pngtoy.get_IHDR(),
+			var hdr = pngtoy.getChunk("IHDR"),
 				type = ["G", "", "RGB", "INDEX", "GA", "", "RGBA"][hdr.type] || "-",
 				texts = "",
 				int = hdr.interlaced ?  "<b>☑</b>" : "☐",
-				icc = pngtoy.get_IHDR() ? "<b>☑</b>" : "☐",
-				srgb = pngtoy.get_sRGB() ? "<b>☑</b>" : "☐",
-				pal = pngtoy.get_PLTE() ? "<b>☑</b>" : "☐",
-				trns = pngtoy.get_tRNS() ? "<b>☑</b>" : "☐",
-				gamma = pngtoy.get_gAMA(),
-				aspect = pngtoy.get_pHYs(),
+				icc = pngtoy.getChunk("IHDR") ? "<b>☑</b>" : "☐",
+				srgb = pngtoy.getChunk("sRGB") ? "<b>☑</b>" : "☐",
+				pal = pngtoy.getChunk("PLTE") ? "<b>☑</b>" : "☐",
+				trns = pngtoy.getChunk("tRNS") ? "<b>☑</b>" : "☐",
+				gamma = pngtoy.getChunk("gAMA"),
+				aspect = pngtoy.getChunk("pHYs"),
 				ratio = aspect ? getRatio(aspect.ppuX, aspect.ppuY) : "-",
 			    depth = hdr.depth || "-",
-				itxt = pngtoy.get_iTXt(),
-				ztxt = pngtoy.get_iTXt(),
-				text = pngtoy.get_iTXt();
+				itxt = pngtoy.getChunk("iTXt"),
+				ztxt = pngtoy.getChunk("iTXt"),
+				text = pngtoy.getChunk("iTXt");
 
 			texts += itxt && itxt.length ? "iTXt, " : "";
 			texts += ztxt && ztxt.length ? "zTXt, " : "";
