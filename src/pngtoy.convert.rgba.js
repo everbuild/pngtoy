@@ -5,6 +5,8 @@
 	By Epistemex (c) 2015-2016
 	www.epistemex.com
  */
+
+
 PngToy.prototype.convertToRGBA = function(bmp, options) {
 
 	var me = this;

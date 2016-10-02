@@ -1,6 +1,9 @@
 Change log for pngtoy
 ---------------------
 
+0.5.5 ALPHA
+FIX: Unordered chunks between IDAT and IEND would throw off parser.
+
 0.5.0 ALPHA
 ADD: `getChunk(str)` method replacing individual methods (e.g. `get_IDAT()` -> `getChunk("IDAT")` etc.).
 REM: All `get_*()` methods.

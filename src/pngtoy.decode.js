@@ -6,9 +6,9 @@
 	www.epistemex.com
  */
 /**
- * Decodes the filtered bitmap from the PNG to a raw bitmap of same
- * byte width and depth. Passes a bitmap object as argument to the promise
- * when done. The decoding is asynchronous and does not block the UI.
+ * Decodes the filtered bitmap from the PNG to a *RAW* but filtered bitmap
+ * of same byte width and depth as well as byte-order. Passes a bitmap object
+ * as argument to the promise when done. The decoding is asynchronous.
  *
  * Call this method after fetch() has been used. The resolve function will
  * receive a bitmap as argument, if rejected a string containing the error
@@ -54,6 +54,7 @@ PngToy.prototype.decode = function() {
 			blocksH =  [8, 8, 4, 4, 2, 2, 1],
 			pass, stepX, stepY, offsetX, blockW, blockH, x;
 
+		// this is temp for alpha/beta - do not make code dependent on this information/object (debug).
 		me.debug = {
 			pixelWidth: pixelWidth,
 			byteWidth: byteWidth,
@@ -74,6 +75,7 @@ PngToy.prototype.decode = function() {
 		};
 
 		if (ihdr.interlaced) {
+			if (typeof console !== "undefined") console.log("WARN: In current alpha interlaced PNGs will not decode properly unless all line-filters are filter 0.");
 			pass = y = offsetX = 0;
 			stepX = stepY = blockW = blockH = 8;
 			setTimeout(decodeI2, PngToy._delay);
@@ -116,9 +118,10 @@ PngToy.prototype.decode = function() {
 			}
 		}
 
+		/*
 		function decodeI1() {
 
-			/*
+			/ *
 				TODO:
 				- each sub-picture must create a temp destination the wxh of the sub-picture
 				- filters are applied to this buffer
@@ -126,7 +129,7 @@ PngToy.prototype.decode = function() {
 
 				Problem now: filters are based on main dest. at full image size
 				- filt0 works, no others.. de-interlacing is OK
-			 */
+			 * /
 
 			try {
 				var ff, filter, i, block = PngToy._blockSize, filts = me.debug.filters,
@@ -189,8 +192,9 @@ PngToy.prototype.decode = function() {
 			catch(err) {
 				reject(err)
 			}
-		}
+		}*/
 
+		//NOTE: Do not use interlaced PNGs at this point (will get support in a future release)
 		function decodeI2() {
 
 			/*
@@ -285,8 +289,8 @@ PngToy.prototype.decode = function() {
 					}
 				}
 
-				function dstCurrentT(pos) {return pos < cPos ? 0 : tmp[pos]>>>0}							// check against current scanline
-				function dstPrevT(pos) {return pos < pPos ? 0 : tmp[pos]>>>0}							// check against previous scanline
+				//function dstCurrentT(pos) {return pos < cPos ? 0 : tmp[pos]>>>0}							// check against current scanline
+				//function dstPrevT(pos) {return pos < pPos ? 0 : tmp[pos]>>>0}							// check against previous scanline
 
 			}
 			catch(err) {

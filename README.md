@@ -38,7 +38,7 @@ Features
 
 - Supports 8-bit, 16-bit, indexed, bit-planes, greyscale, rgb, rgba, transparency and (interlaced).
 - Strict parsing conforming to the standard (can be turned off for error correction purposes)
-- CRC-checking for each chunk (can be turned off for error correction purposes)
+- CRC-32 checking for each chunk (can be turned off for error correction purposes)
 - Using typed arrays for best performance
 - Fast gzip implementation (pako)
 - Non UI-blocking asynchronous block based decoding and format converting

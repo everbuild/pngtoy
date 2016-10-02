@@ -1,10 +1,16 @@
 /*!
-	pngtoy version 0.5.0 ALPHA
-
-	By Epistemex (c) 2015-2016
-	www.epistemex.com
-	MIT License (this header required)
+	pngtoy version 0.5.5 ALPHA
+	(c) 2015-2016 Epistemex.com
+	MIT License
 */
+
+// for 0.6 (beta) -
+//todo interlace mode!
+//todo node support
+//todo add progress callback
+//todo add webworker example
+//todo use time-based async blocks instead of size
+//todo remove debug info?
 
 /**
  * Creates a new PngToy object which is used to load a PNG image off the
@@ -22,7 +28,9 @@ function PngToy(options) {
 
 	this.doCRC = isBool(options.doCRC) ? options.doCRC : true;
 	this.allowInvalid = isBool(options.allowInvalid) ? options.allowInvalid : false;
-	this.beforeSend = options.beforeSend || function(xhr) {};
+	this.beforeSend = options.beforeSend || noop;
+
+	function noop(){}
 
 	/**
 	 * The URL that has been fetched.
@@ -84,17 +92,20 @@ PngToy.prototype = {
 				xhr.onerror = function(e) {reject("Network error. " + e.message)};
 				xhr.onload = function() {
 					if (xhr.status === 200) {
+
 						var view = new DataView(xhr.response),
-							chunkO;
+							chunks;
+
 						if (view.getUint32(0) === 0x89504E47 && view.getUint32(4) === 0x0D0A1A0A) {
 							me.buffer = view.buffer;
 							me.view = view;
-							chunkO = PngToy._getChunks(me.buffer, me.view, me.doCRC, me.allowInvalid);
-							me.chunks = chunkO.chunks || null;
+							chunks = PngToy._getChunks(me.buffer, me.view, me.doCRC, me.allowInvalid);
+							me.chunks = chunks.chunks || null;
+
 							if (me.chunks || me.allowInvalid)
 								resolve();
 							else
-								reject(chunkO.error);
+								reject(chunks.error);
 						}
 						else {
 							reject("Not a PNG file.");
@@ -168,7 +179,7 @@ PngToy.prototype = {
 		var buffer = new Uint8Array(256), i = 0,
 			gamma =  1 / (fileGamma * dispGamma * userGamma);
 
-		for(; i < 256; i++) buffer[i] = (Math.pow(i / 255, gamma) * 255 + 0.5)|0;
+		for(; i < 256; i++) buffer[i] = Math.round(Math.pow(i / 255, gamma) * 255);
 		return buffer
 	},
 
@@ -180,7 +191,7 @@ PngToy.prototype = {
 	 * @returns {number}
 	 */
 	guessDisplayGamma: function() {
-		return (navigator.userAgent.indexOf("Mac OS") > -1) ? 1.8 : 2.2;
+		return navigator.userAgent.indexOf("Mac OS") > -1 ? 1.8 : 2.2
 	}
 };
 
