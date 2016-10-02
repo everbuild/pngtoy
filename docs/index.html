@@ -3,60 +3,68 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 	<title>pngtoy Index</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
 
-	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	<link type="text/css" rel="stylesheet" href="styles/site.lumen.css">
 
 </head>
 
 <body>
-<div class="container-fluid">
-	<div class="navbar navbar-fixed-top ">
-		<div class="navbar-inner">
-			<a class="brand" href="index.html">pngtoy</a>
-			<ul class="nav">
-				
-				<li class="dropdown">
-					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
-						class="caret"></b></a>
 
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="PngImage.html">PngImage</a>
-						</li>
-						
-						<li>
-							<a href="PngToy.html">PngToy</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-			</ul>
-		</div>
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">pngtoy</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PngImage.html">PngImage</a></li><li><a href="PngToy.html">PngToy</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+		<div class="col-sm-3 col-md-3">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
 	</div>
 
-	<div class="row-fluid">
+</div>
+</div>
 
-		
-		<div class="span8">
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
 			
-				<div id="main">
-					
-
 
 	
-	<span class="page-title">Index</span>
 	
-	
-
 
 
 
@@ -76,20 +84,32 @@
 
 
     <section class="readme-section">
-        <article><h1>﻿pngtoy</h1><p>Low-level implementation of PNG file parser/reader/decoder using JavaScript<br>on client size.</p>
+        <article><h1>﻿pngtoy</h1><p>Low-level implementation of PNG file parser/reader/decoder using JavaScript
+on client size.</p>
 <p><em>Why this when browsers already parses PNG files?</em></p>
-<p>The browser will simply load and convert any PNG type into RGBA bitmaps.<br>It may also apply ICC and gamma correction to the image resulting in<br>different pixel values than in the original bitmap.</p>
-<p><strong>pngtoy</strong> is for special case scenarios where you need to work with the<br>original bitmap as-is (ie. no gamma, no ICC, indexed, 16-bit etc.) and<br>you need the original pixel values and format. This will also keep the bitmap values<br>consistent across browsers as some browser support ICC, gamma, others don't.</p>
-<p><strong>pngtoy</strong> can also be used to analyse PNG files, extract special information<br>such as header, chunks, texts, or to reduce file size, or as a tool to in<br>an attempt to repair a PNG file, add or remove chunks, and so forth.</p>
-<p><strong>pngtoy</strong> will allow you to work directly with, for example 16-bit greyscale<br>bitmap buffers as well as other formats such as bit-planes (you can still<br>convert the bitmap to RGBA bitmap or canvas).</p>
-<p><strong>pngtoy</strong> attempts to read all formats specified by the W3C standard (* interlaced<br>not currently supported).</p>
-<p><strong>pngtoy</strong> can also be used to clean up PNG files by stripping unnecessary<br>chunks and rebuild a file you can save as new.</p>
-<p><strong>pngtoy</strong> let you just parse the chunks without decompressing and decoding<br>any data.</p>
-<p><strong>pngtoy</strong> does not <em>encode</em> PNG files.</p>
+<p>The browser will simply load and convert any PNG type into RGBA bitmaps.
+It may also apply ICC and gamma correction to the image resulting in
+different pixel values than in the original bitmap.</p>
+<p><strong>pngtoy</strong> is for special case scenarios where you need to work with the
+original bitmap as-is and you need the original pixel values and format
+(i.e. no gamma, no ICC, indexed, 16-bit, grayscale etc.). This will also 
+keep the bitmap values consistent across browsers as some browser support 
+ICC, gamma, others don't.</p>
+<p><strong>pngtoy</strong> can also be used to analyse PNG files, extract special information
+such as header, chunks, texts, or to reduce file size, or as a tool to in
+an attempt to repair a PNG file, add or remove chunks, and so forth.</p>
+<p><strong>pngtoy</strong> will allow you to work directly with, for example 16-bit greyscale
+bitmap buffers as well as other formats such as bit-planes (you can still
+convert the bitmap to RGBA bitmap or canvas).</p>
+<p><strong>pngtoy</strong> attempts to read all formats specified by the W3C standard.</p>
+<p><strong>pngtoy</strong> can also be used to clean up PNG files by stripping unnecessary
+chunks and rebuild a file you can save as new.</p>
+<p><strong>pngtoy</strong> let you just parse the chunks without decompressing and decoding
+any data.</p>
 <h2>Features</h2><ul>
 <li>Supports 8-bit, 16-bit, indexed, bit-planes, greyscale, rgb, rgba, transparency and (interlaced).</li>
 <li>Strict parsing conforming to the standard (can be turned off for error correction purposes)</li>
-<li>CRC-checking for each chunk (can be turned off for error correction purposes)</li>
+<li>CRC-32 checking for each chunk (can be turned off for error correction purposes)</li>
 <li>Using typed arrays for best performance</li>
 <li>Fast gzip implementation (pako)</li>
 <li>Non UI-blocking asynchronous block based decoding and format converting</li>
@@ -102,7 +122,8 @@
 <li>Uses promises (use Promise polyfill for IE)</li>
 <li>Can be used in attempt to rescue corrupted PNG files</li>
 </ul>
-<p>Run the PNG test suit from the tests directory to see current status/rendering (must run<br>from localhost in some browsers due to CORS restrictions). See known issues below.</p>
+<p>Run the PNG test suit from the tests directory to see current status/rendering (must run
+from localhost in some browsers due to CORS restrictions). See known issues below.</p>
 <h2>Install</h2><p><strong>pngtoy</strong> can be installed in various ways:</p>
 <ul>
 <li>Bower <code>bower install pngtoy</code></li>
@@ -118,16 +139,18 @@
 var chunks = pngtoy.getChunks();               // chunk list - does not decode any data
 
 // parse individual chunks to object (all official chunks are supported)
-var ihdr = pngtoy.get_IHDR();                   // return object for parsed IHDR chunk
-var raw = pngtoy.get_IDAT();                    // get unfiltered but uncompressed bitmap data
-var palette = pngtoy.get_PLTE();               // get parsed palette if exists, or null
-var texts = pngtoy.get_zTXt();                 // get array with parsed and uncompressed zTXt objects
-var stereo = pngtoy.get_sTER();                // get stereo mode if stereo image
+var ihdr = pngtoy.getChunk(&quot;IHDR&quot;);               // return object for parsed IHDR chunk
+var raw = pngtoy.getChunk(&quot;IDAT&quot;);                // get unfiltered but uncompressed bitmap data
+var palette = pngtoy.getChunk(&quot;PLTE&quot;);         // get parsed palette if exists, or null
+var texts = pngtoy.getChunk(&quot;zTXt&quot;);           // get array with parsed and uncompressed zTXt objects
+var stereo = pngtoy.getChunk(&quot;sTER&quot;);          // get stereo mode if stereo image
 ...
+
+// you can also obtain private chunks but will have to parse them manually
 
 // decode
 pngtoy.decode(options).then( ...) ;            // get decoded bitmap in original depth and type
-pngtoy.bitmapToCanvas(bmp, options).then(...)  // convert to canvas and apply optional gamma</code></pre><p>See also the <code>PngImage</code> object.</p>
+pngtoy.bitmapToCanvas(bmp, options).then(...)  // convert to canvas and apply optional gamma</code></pre><p>See also the <code>PngImage</code> object which wraps the basic steps up for convenience (see docs for usage).</p>
 <p>NOTE: ALPHA version - API may change, see tests for current examples.</p>
 <h2>Known issues (alpha)</h2><ul>
 <li>Interlace (Adam7) mode is currently not implemented</li>
@@ -148,104 +171,133 @@ pngtoy.bitmapToCanvas(bmp, options).then(...)  // convert to canvas and apply op
 
 
 
-				</div>
-
-				<div class="clearfix"></div>
-				<footer>
-					
-					<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHub</a></b></p>
-					<br />
-					
-					
-		<span class="copyright">
-		Copyright &copy; 2015-2016 Epistemex
-		</span>
-					<br />
-					
-		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
-		on Fri Jul 15th 2016 using the <a
-			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-		</span>
-				</footer>
-			</div>
-
-			
-			<div class="span3">
-				<div id="toc"></div>
-			</div>
-			
-			<br clear="both">
 		</div>
-
 	</div>
-	<!--<script src="scripts/sunlight.js"></script>-->
-	<script src="scripts/docstrap.lib.js"></script>
-	<script src="scripts/bootstrap-dropdown.js"></script>
-	<script src="scripts/toc.js"></script>
 
-	<script>
-		$( function () {
-			$( "[id*='$']" ).each( function () {
-				var $this = $( this );
+	<div class="clearfix"></div>
 
-				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-			} );
-
-			$( "#toc" ).toc( {
-				anchorName  : function ( i, heading, prefix ) {
-					return $( heading ).attr( "id" ) || ( prefix + i );
-				},
-				selectors   : "h1,h2,h3,h4",
-				showAndHide : false,
-				scrollTo    : "100px"
-			} );
-
-			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-			$( '.dropdown-toggle' ).dropdown();
-//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-				var $this = $( this );
-
-				var example = $this.find( "code" );
-				exampleText = example.html();
-				var lang = /{@lang (.*?)}/.exec( exampleText );
-				if ( lang && lang[1] ) {
-					exampleText = exampleText.replace( lang[0], "" );
-					example.html( exampleText );
-					lang = lang[1];
-				} else {
-					lang = "javascript";
-				}
-
-				if ( lang ) {
-
-					$this
-						.addClass( "sunlight-highlight-" + lang )
-						.addClass( "linenums" )
-						.html( example.html() );
-
-				}
-			} );
-
-			Sunlight.highlightAll( {
-				lineNumbers : false,
-				showMenu : true,
-				enableDoclinks : true
-			} );
-		} );
-	 </script>
-
-
-
-	<!--Navigation and Symbol Display-->
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
 	
 
+</div>
+</div>
 
-	<!--Google Analytics-->
+<div class="modal fade" id="searchResults">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Search results</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<footer>
+
+	<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHub</a></b></p>
+
+
+	<span class="copyright">
+	Copyright &copy; 2015-2016 Epistemex
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
 	
+		on Sun Oct 2nd 2016
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			var id = $( heading ).attr( "id" );
+			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		SearcherDisplay.init();
+	});
+</script>
 
 </body>
 </html>
