@@ -10,15 +10,25 @@ PngToy._IDAT = function(host) {
 	var buffer = host.buffer,
 		chunks = host.chunks,
 		allowInvalid = host.allowInvalid,
-		i = 0, chunk, isEnd,
+		i = 0, chunk,
+		isEnd = false,
 		inflate = new pako.Inflate(), hasIDAT = false;
 
-	for(; chunk = chunks[i++];) {
+	// find first IDAT chunk
+	while(chunk = chunks[i++]) {
 		if (chunk.name === "IDAT") {
 			hasIDAT = true;
-			isEnd = (chunks[i].name === "IEND");
-			inflate.push(new Uint8Array(buffer, chunk.offset, chunk.length), isEnd)
+			break;
 		}
+	}
+
+	while(chunk) {
+		isEnd = chunk.name === "IEND";
+
+		if (chunk.name === "IDAT")
+			inflate.push(new Uint8Array(buffer, chunk.offset, chunk.length), isEnd);
+
+		chunk = chunks[i++];
 	}
 
 	// wo IEND the inflate won't flush - can be redesigned to do a check pass first, then push() pass
