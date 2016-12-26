@@ -1,7 +1,7 @@
 {
   "name": "pngtoy",
   "homepage": "https://github.com/epistemex/pngtoy",
-  "version": "0.5.0",
+  "version": "0.5.0.1",
   "description": "Loads, parses and decodes PNG files client side. Access to chunks, text, raw bitmap and more",
   "main": "pngtoy.min.js",
   "repository": "git@github.com:everbuild/pngtoy.git",
